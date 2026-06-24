@@ -1,13 +1,19 @@
 import click
 import gradio as gr
 
-from steps import LoadImagePanel, ThresholdPanel, DisplayMasksPanel
+from steps import LoadImagePanel, ResizeImagePanel, BlurImagePanel, ColorSelectionPanel, StencilCreatePanel
 
 
 @click.command()
 @click.option("--server-port", default=7860, help="Port to serve the Gradio app on.")
 def run(server_port: int):
-    pipeline_steps = [LoadImagePanel(), ThresholdPanel(), DisplayMasksPanel()]
+    pipeline_steps = [
+        LoadImagePanel(),
+        ResizeImagePanel(),
+        BlurImagePanel(),
+        ColorSelectionPanel(),
+        StencilCreatePanel(),
+    ]
     demo = build_demo(pipeline_steps)
     demo.launch(server_port=server_port)
 

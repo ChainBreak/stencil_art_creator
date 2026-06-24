@@ -7,4 +7,6 @@ dependencies = [
     "gradio",
     "numpy",
     "click",
+    "pillow",
+    "opencv-python",
 ]
